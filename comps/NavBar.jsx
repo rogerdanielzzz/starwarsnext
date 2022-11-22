@@ -8,7 +8,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 // Components made with React
-import Searchbar from '../Searchbar/Searchbar';
+import Searchbar from './Searchbar';
 // Style in SCSS format
 import Style from "./NavBar.module.scss"
 //Img import
