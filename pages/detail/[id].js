@@ -2,22 +2,21 @@
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from "react-redux";
-import { loadingSwitcher, cleanDetail, getDetail, pageSwitcher } from "../redux/actions/index.js";
+import { loadingSwitcher, cleanDetail, getDetail, pageSwitcher } from "../../redux/actions/index.js";
 // Bootstrap Component
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 // Components made with React
-import Loader from '../comps/Loader.jsx';
+import Loader from '../../comps/Loader.jsx';
 // Style in SCSS format
-import Style from './Detail.module.scss'
+import Style from '../../styles/[id].module.scss'
 
 //This is a component where all the info about the characters will rendered in a bootstrap card
 
 const Detail = () => {
     //Hook to get de params of the route
-    let { query } = useRouter();
-console.log({ query });
-    let { id } = query();
+    let router = useRouter();
+    const { id } = router.query
     const dispatch = useDispatch();
 
     // Global States called with Redux useDispatch Hook
@@ -29,7 +28,7 @@ console.log({ query });
     // This is a conditional to fix an api error , the endpoint 17 doesnt exist so we use an auxiliar variable 
     let idFix = id
     if (id >= 17) idFix = ((id * 1) + 1)
-    let name = arrId[id - 1].name
+    let name = arrId[id - 1]?.name
     let imgSource = `https://starwars-visualguide.com/assets/img/characters/${idFix}.jpg`
 
 

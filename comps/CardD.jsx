@@ -24,7 +24,7 @@ const CardD = (props) => {
 
     // The entire card is a link to the detail section of the character with React Router Dom
     return (
-        <Link className={Style.link} href= {`/detail`}>
+        <Link className={Style.link} href= {`/detail/${key}`}>
             
             <Card className={Style.Container}>
                 <Card.Img variant="top" src={imgSource} />

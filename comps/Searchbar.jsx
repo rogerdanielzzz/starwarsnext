@@ -1,31 +1,32 @@
 //Dependencies import
 import React, { useState } from 'react'
-import { useHistory } from "react-router-dom"
+import { useRouter } from 'next/router'
 import { useDispatch} from "react-redux";
-import {loadingSwitcher,} from "../../redux/actions/index.js";
+import {loadingSwitcher} from "../redux/actions/index.js";
 
 // Bootstrap Component
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 // Style in SCSS format
-import Style from './Searchbar.module.scss'
+import Style from '../styles/Searchbar.module.scss'
 // Img Import
-import SearchIcon from "../../img/search.svg"
+import Image from "next/image"
+import SearchIcon from "../img/search.svg"
 
 //Reusable SearchBar Component, recive a function by props that will called on submmit
 const Searchbar = ({ handle , toRoute }) => {
     const dispatch = useDispatch();
 
     //Hook to redirect 
-    const navigate = useHistory();
-    //Local State to set change on text input
+  //  const navigate = useHistory();
+         const router = useRouter()    //Local State to set change on text input
     const [texto, setTexto] = useState("")
     const handleChange = (e) => {
         setTexto(e.target.value)
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        handle(texto).then(() => navigate.push(toRoute))
+        handle(texto).then(() => router.push(toRoute))
         dispatch(loadingSwitcher(true))
 
         e.target.reset()
@@ -39,7 +40,7 @@ const Searchbar = ({ handle , toRoute }) => {
                 placeholder="Search a Character"
                 className="rounded-left"
             />
-            <Button type='submit' className={Style.sButton}><img src={SearchIcon} alt="Search Icon" /></Button>
+            <Button type='submit' className={Style.sButton}><Image src={SearchIcon} alt="Search Icon" /></Button>
         </Form>
 
     )

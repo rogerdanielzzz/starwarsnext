@@ -1,8 +1,9 @@
 //Dependencies import
 import React from 'react'
 import { useDispatch } from "react-redux";
-import { Link, useLocation } from "react-router-dom"
-import { searchCharacter } from "../../redux/actions/index.js";
+import Link  from "next/link";
+
+import { searchCharacter } from "../redux/actions";
 // Bootstrap Component
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -10,19 +11,26 @@ import Navbar from 'react-bootstrap/Navbar';
 // Components made with React
 import Searchbar from './Searchbar';
 // Style in SCSS format
-import Style from "./NavBar.module.scss"
+import Style from "../styles/NavBar.module.scss"
 //Img import
-import logo from "../../img/logo.png"
-// import to remplace bootstrap toogle icon
-import "./style.css"
+import Image from 'next/image'
+import logo from "../img/logo.png"
+import { useRouter } from 'next/router'
+
+
 
 
 //This is a navbar component that will be rendered in all sections
 const NavBar = () => {
     const dispatch = useDispatch();
-    // Hook to knoe in which route we are 
-    const location = useLocation();
-    let route = location.pathname
+   
+   
+    // Hook to know in which route we are 
+
+    let router = useRouter();
+        const { route } = router
+
+   
 
     // Search Bar is a reusable component so we need to provide a function by props
     let handle = (el) => dispatch(searchCharacter(el, 1));
@@ -31,8 +39,8 @@ const NavBar = () => {
         // navbar with condition navlink style class if we already are in the route
         <Navbar className={Style.NavContainer} expand="lg" >
             <Container fluid>
-                <Link to={`/`}>
-                    <Navbar.Brand className={Style.con}><img className={Style.logo} src={logo} alt="Star War Logo" /></Navbar.Brand>
+                <Link href={`/`}>
+                    <Navbar.Brand className={Style.con}><Image className={Style.logo} src={logo} alt="Star War Logo"  /></Navbar.Brand>
                 </Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -41,7 +49,7 @@ const NavBar = () => {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Link className={route === "/" ? Style.active : Style.NavText} to={`/`}>
+                        <Link className={route === "/" ? Style.active : Style.NavText} href={`/`}>
                             Characters
                         </Link>
 
