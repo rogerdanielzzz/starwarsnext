@@ -1,7 +1,8 @@
+'use client'
 //Dependencies import
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { getCharacter, pageSwitcher, loadingSwitcher, searchCharacter, cleanerFinded, cleanerCharacter ,cleanerShowAll} from "../redux/actions";
+import { getCharacter, pageSwitcher, loadingSwitcher, searchCharacter, cleanerFinded, cleanerCharacter ,cleanerShowAll} from "../../redux/actions";
 // Bootstrap Component
 import Container from 'react-bootstrap/Container';
 // Components made with React
@@ -9,13 +10,14 @@ import Card from "./CardD.jsx";
 import Loader from './Loader.jsx';
 import PaginationBar from "./PaginationBar.jsx";
 // Style in SCSS format
-import Style from '../styles/CardContainer.module.scss'
+import Style from '../../styles/CardContainer.module.scss'
+import { useRouter } from 'next/navigation'
 
 
 //This is a component where all the characters Cards will rendered
 const CardContainer = () => {
 
-
+let router = useRouter()
   const dispatch = useDispatch();
   // Global States called with Redux useDispatch Hook
   const characters = useSelector((state) => state.charArr);
@@ -26,7 +28,10 @@ const CardContainer = () => {
   const totalFinded = useSelector((state) => state.totalFinded)
   const lastSearch = useSelector((state) => state.lastSearch)
   // A state cleaner function called by button onClick
-  let cleaner = () => dispatch(cleanerShowAll())
+  let cleaner = () =>{
+     dispatch(cleanerShowAll())
+     
+    }
 
 
   // An Auxiliar Variable for define the total element to render and paginate

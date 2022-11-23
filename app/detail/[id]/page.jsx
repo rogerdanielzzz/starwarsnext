@@ -1,22 +1,26 @@
 //Dependencies import
+"use client"
 import React, { useEffect } from 'react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from "react-redux";
-import { loadingSwitcher, cleanDetail, getDetail, pageSwitcher } from "../../redux/actions/index.js";
+import { loadingSwitcher, cleanDetail, getDetail, pageSwitcher } from "../../../redux/actions/index";
 // Bootstrap Component
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 // Components made with React
-import Loader from '../../comps/Loader.jsx';
+import Loader from '../../components/Loader.jsx';
 // Style in SCSS format
-import Style from '../../styles/[id].module.scss'
+import Style from '../../../styles/[id].module.scss'
 
 //This is a component where all the info about the characters will rendered in a bootstrap card
 
-const Detail = () => {
+
+
+
+
+const Detail = ({params}) => {
     //Hook to get de params of the route
-    let router = useRouter();
-    const { id } = router.query
+    const { id } = params
     const dispatch = useDispatch();
 
     // Global States called with Redux useDispatch Hook

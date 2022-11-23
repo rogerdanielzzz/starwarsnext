@@ -1,11 +1,12 @@
 //Dependencies import
+'use client'
 import React from 'react'
 import Link  from "next/link";
 import { useSelector } from "react-redux";
 // Bootstrap Component
 import Card from 'react-bootstrap/Card';
 // Style in SCSS format
-import Style from "../styles/Card.module.scss"
+import Style from "../../styles/Card.module.scss"
 
 //This is a component where the name and picture of one character will rendered
 const CardD = (props) => {

@@ -1,17 +1,18 @@
+'use client'
+
 //Dependencies import
 import React, { useState } from 'react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useDispatch} from "react-redux";
-import {loadingSwitcher} from "../redux/actions/index.js";
-
+import {loadingSwitcher} from "../../redux/actions/index.js";
 // Bootstrap Component
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 // Style in SCSS format
-import Style from '../styles/Searchbar.module.scss'
+import Style from '../../styles/Searchbar.module.scss'
 // Img Import
 import Image from "next/image"
-import SearchIcon from "../img/search.svg"
+import SearchIcon from "../../img/search.svg"
 
 //Reusable SearchBar Component, recive a function by props that will called on submmit
 const Searchbar = ({ handle , toRoute }) => {
@@ -19,7 +20,7 @@ const Searchbar = ({ handle , toRoute }) => {
 
     //Hook to redirect 
   //  const navigate = useHistory();
-         const router = useRouter()    //Local State to set change on text input
+        const router = useRouter()    //Local State to set change on text input
     const [texto, setTexto] = useState("")
     const handleChange = (e) => {
         setTexto(e.target.value)

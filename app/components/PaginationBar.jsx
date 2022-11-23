@@ -1,8 +1,10 @@
 //Dependencies import
+'use client'
+
 import React from 'react';
 import { useSelector } from "react-redux";
 // Style in SCSS format
-import Style from "../styles/PaginationBar.module.scss"
+import Style from "../../styles/PaginationBar.module.scss"
 
 /* this is a reusable component that paginate the element need 3 argunmet by props, a
  callback function with the logic, and the total elements and how many element per page to rander*/
