@@ -11,7 +11,14 @@ export default function RootLayout({ children }) {
     <Provider store={store}>
 
     <html>
-      <head />
+      <head>
+      <meta  property="og:title" content="Star Wars Character App "/>
+      <meta property="og:image" content="https://i.ebayimg.com/images/g/tMkAAOSwRnNdYnE7/s-l500.jpg"/>
+      <meta property="og:description"
+    content="A little project for a Selection Challenge made it by Roger Pérez"/>
+    <title> Star Wars</title>
+
+      </head>
 
       <body>
         <NavBar/>
