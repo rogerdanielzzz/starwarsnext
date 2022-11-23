@@ -4,9 +4,7 @@ import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from "react-redux";
 import { loadingSwitcher, cleanDetail, getDetail, pageSwitcher } from "../../../redux/actions/index";
-// Bootstrap Component
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
+
 // Components made with React
 import Loader from '../../components/Loader.jsx';
 // Style in SCSS format
@@ -63,30 +61,30 @@ const Detail = ({params}) => {
             {isLoading ?
                 <Loader />
                 :
-                <Card className={Style.Father} style={{ width: '80vw' }}>
+                <div className={`card ${Style.Father}`} style={{ width: '80vw' }}>
                     <div className={Style.Left}>
-                        <Card.Img variant="top" src={imgSource} />
+                        <img className='card-img-top' src={imgSource} />
                     </div>
                     <div className={Style.Right}>
-                        <Card.Body>
-                            <Card.Title className={Style.Title}>{detail.name}</Card.Title>
-                            <Card.Text className={Style.text}>
+                        <div className= "card-body">
+                            <div className={`card-title h5 ${Style.Title}`}>{detail.name}</div>
+                            <p className={`card-text ${Style.text}`}>
                                 Appears: {detail.films}
-                            </Card.Text>
-                        </Card.Body>
-                        <ListGroup className="list-group-flush">
-                            <ListGroup.Item className={Style.List}>Height: {detail.height}Cm</ListGroup.Item>
-                            <ListGroup.Item className={Style.List}>Mass : {detail.mass}Kg</ListGroup.Item>
-                            <ListGroup.Item className={Style.List}>Hair color: {detail.hair_color} </ListGroup.Item>
-                            <ListGroup.Item className={Style.List}>Skin color: {detail.skin_color}</ListGroup.Item>
-                            <ListGroup.Item className={Style.List}>Eyes color: {detail.eye_color}</ListGroup.Item>
-                            <ListGroup.Item className={Style.List}>Birth year: {detail.birth_year}</ListGroup.Item>
-                            <ListGroup.Item className={Style.List}>Gender : {detail.gender}</ListGroup.Item>
-                            <ListGroup.Item className={Style.List}>Homeworld: {detail.homeworld}</ListGroup.Item>
-                        </ListGroup>
+                            </p>
+                        </div>
+                        <div className="list-group-flush list-group">
+                            <div className={`list-group-item ${Style.List}`}>Height: {detail.height}Cm</div>
+                            <div className={`list-group-item ${Style.List}`}>Mass : {detail.mass}Kg</div>
+                            <div className={`list-group-item ${Style.List}`}>Hair color: {detail.hair_color} </div>
+                            <div className={`list-group-item ${Style.List}`}>Skin color: {detail.skin_color}</div>
+                            <div className={`list-group-item ${Style.List}`}>Eyes color: {detail.eye_color}</div>
+                            <div className={`list-group-item ${Style.List}`}>Birth year: {detail.birth_year}</div>
+                            <div className={`list-group-item ${Style.List}`}>Gender : {detail.gender}</div>
+                            <div className={`list-group-item ${Style.List}`}>Homeworld: {detail.homeworld}</div>
+                        </div>
                     </div>
 
-                </Card>}
+                </div>}
 
         </div>
     )
