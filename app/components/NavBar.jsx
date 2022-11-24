@@ -2,7 +2,7 @@
 'use client'
 import Link  from "next/link";
 import { searchCharacter } from "../../redux/actions";
-import { useDispatch } from "react-redux";
+import { useDispatch ,useSelector} from "react-redux";
 
 
 // Bootstrap Component
@@ -30,7 +30,7 @@ const NavBar = () => {
     let route = usePathname();
     // Hook to know in which route we are 
 
-   
+   console.log(useSelector((state)=>state.charFinded.error))
 
    
 

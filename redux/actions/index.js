@@ -83,6 +83,7 @@ export const getDetail = (id) => {
       dispatch({ type: GET_DETAIL, payload: finalDetail });
       dispatch({ type: LOADING_SWITCHER, payload: false });
     } catch (error) {
+
       dispatch({ type: LOADING_SWITCHER, payload: false });
       dispatch({
         type: SEARCH_CHARACTER,

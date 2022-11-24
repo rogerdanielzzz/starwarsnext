@@ -1,14 +1,16 @@
 //Dependencies import
 "use client"
 import React, { useEffect } from 'react'
-import { useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from "react-redux";
-import { loadingSwitcher, cleanDetail, getDetail, pageSwitcher } from "../../../redux/actions/index";
-
+import { loadingSwitcher, cleanDetail, getDetail, pageSwitcher,cleanerShowAll } from "../../../redux/actions/index";
+import Error from 'next/error';
 // Components made with React
 import Loader from '../../components/Loader.jsx';
 // Style in SCSS format
 import Style from '../../../styles/[id].module.scss'
+import Msg from '../../components/Msg';
+import { useRouter } from 'next/navigation'
+
 
 //This is a component where all the info about the characters will rendered in a bootstrap card
 
@@ -16,13 +18,20 @@ import Style from '../../../styles/[id].module.scss'
 
 
 
-const Detail = ({params}) => {
+const Detail = ({ params }) => {
     //Hook to get de params of the route
     const { id } = params
+    const router = useRouter()    //Local State to set change on text input
+
     const dispatch = useDispatch();
+    let cleaner = () => {
+        dispatch(cleanerShowAll())
+        router.push("/")
+    }
 
     // Global States called with Redux useDispatch Hook
     const detail = useSelector((state) => state.charDetail);
+    const char = useSelector((state) => state.charFinded)
     const arrId = useSelector((state) => state.idArr)
     const isLoading = useSelector((state) => state.isLoading)
 
@@ -60,32 +69,33 @@ const Detail = ({params}) => {
         <div className={Style.Container}>
             {isLoading ?
                 <Loader />
-                :
+                : char.error? <Msg cleaner={cleaner}/>:
                 <div className={`card ${Style.Father}`} style={{ width: '80vw' }}>
-                    <div className={Style.Left}>
-                        <img className='card-img-top' src={imgSource} />
-                    </div>
-                    <div className={Style.Right}>
-                        <div className= "card-body">
-                            <div className={`card-title h5 ${Style.Title}`}>{detail.name}</div>
-                            <p className={`card-text ${Style.text}`}>
-                                Appears: {detail.films}
-                            </p>
+                        <div className={Style.Left}>
+                            <img className='card-img-top' src={imgSource} />
                         </div>
-                        <div className="list-group-flush list-group">
-                            <div className={`list-group-item ${Style.List}`}>Height: {detail.height}Cm</div>
-                            <div className={`list-group-item ${Style.List}`}>Mass : {detail.mass}Kg</div>
-                            <div className={`list-group-item ${Style.List}`}>Hair color: {detail.hair_color} </div>
-                            <div className={`list-group-item ${Style.List}`}>Skin color: {detail.skin_color}</div>
-                            <div className={`list-group-item ${Style.List}`}>Eyes color: {detail.eye_color}</div>
-                            <div className={`list-group-item ${Style.List}`}>Birth year: {detail.birth_year}</div>
-                            <div className={`list-group-item ${Style.List}`}>Gender : {detail.gender}</div>
-                            <div className={`list-group-item ${Style.List}`}>Homeworld: {detail.homeworld}</div>
+                        <div className={Style.Right}>
+                            <div className="card-body">
+                                <div className={`card-title h5 ${Style.Title}`}>{detail.name}</div>
+                                <p className={`card-text ${Style.text}`}>
+                                    Appears: {detail.films}
+                                </p>
+                            </div>
+                            <div className="list-group-flush list-group">
+                                <div className={`list-group-item ${Style.List}`}>Height: {detail.height}Cm</div>
+                                <div className={`list-group-item ${Style.List}`}>Mass : {detail.mass}Kg</div>
+                                <div className={`list-group-item ${Style.List}`}>Hair color: {detail.hair_color} </div>
+                                <div className={`list-group-item ${Style.List}`}>Skin color: {detail.skin_color}</div>
+                                <div className={`list-group-item ${Style.List}`}>Eyes color: {detail.eye_color}</div>
+                                <div className={`list-group-item ${Style.List}`}>Birth year: {detail.birth_year}</div>
+                                <div className={`list-group-item ${Style.List}`}>Gender : {detail.gender}</div>
+                                <div className={`list-group-item ${Style.List}`}>Homeworld: {detail.homeworld}</div>
+                            </div>
                         </div>
+
                     </div>
-
-                </div>}
-
+                    
+            }
         </div>
     )
 }
