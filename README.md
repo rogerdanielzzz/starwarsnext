@@ -1,6 +1,6 @@
 # Star War Character APP
 
-This project was developed for a tech challenge, it is an app that shows you the Star Wars Characters from Swampi.dev made it with React
+This project was developed for a tech challenge, it is an app that shows you the Star Wars Characters from Swampi.dev made it with Next.js 13
 
 - Deploy URL: https://starwarsnext.vercel.app/
 - Github Repository URL: https://github.com/rogerdanielzzz/starwarsnext
