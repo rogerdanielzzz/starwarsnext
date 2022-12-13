@@ -14,6 +14,7 @@ This project was developed for a tech challenge, it is an app that shows you the
 
 ## Technologies
 
+- Next.js 13
 - React
 - React-dom
 - React-Router
