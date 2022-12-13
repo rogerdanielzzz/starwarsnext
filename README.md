@@ -2,8 +2,8 @@
 
 This project was developed for a tech challenge, it is an app that shows you the Star Wars Characters from Swampi.dev made it with React
 
-- Deploy URL: https://starwar-seven.vercel.app/
-- Github Repository URL: https://github.com/rogerdanielzzz/Front-End-Challengeapp/
+- Deploy URL: https://starwarsnext.vercel.app/
+- Github Repository URL: https://github.com/rogerdanielzzz/starwarsnext
 
 ## Project features
 
